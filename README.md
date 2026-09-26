@@ -27,15 +27,15 @@ Mỗi service là một project Gradle độc lập (có wrapper, Dockerfile). K
 ## Chạy nhanh
 
 ```bash
-make env                      # tạo services/*/.env từ .env.example, tự sinh JWT secret
-make up                       # Docker: Postgres + Redis + auth + task + gateway
+make setup                    # kiểm tra Docker, tạo services/*/.env (tự sinh JWT secret), bật Postgres + Redis
+make up                       # build và chạy Postgres + Redis + auth + task + gateway trong Docker
 ```
 
 Mỗi service tự đọc `.env` ở thư mục của nó (Spring `spring.config.import`), nên tách service ra repo riêng chỉ cần mang theo thư mục đó.
 `JWT_SECRET` của auth và task phải giống nhau. Biến môi trường thật luôn ưu tiên hơn `.env`.
 
-Hoặc chạy từng service ngoài Docker: `make infra` (Postgres map ra cổng máy **5433** để không đụng Postgres cài sẵn trên 5432), rồi ba terminal `make run-auth`, `make run-task`, `make run-gateway`.
-Test không cần Docker (dùng H2): `make test`.
+Hoặc chạy từng service ngoài Docker: `make infra-up` (Postgres map ra cổng máy **5433** để không đụng Postgres cài sẵn trên 5432), rồi ba terminal `make run-auth`, `make run-task`, `make run-gateway`.
+Test không cần Docker (dùng H2): `make test`. Xem trạng thái: `make status`. Xem log: `make logs` (hoặc `make logs-auth`, `logs-task`, `logs-gateway`). Dừng: `make stop` (giữ container) hoặc `make down`. Xem đủ lệnh: `make help`.
 
 Swagger: `http://localhost:3000/api/docs` (auth), `http://localhost:3010/api/docs` (task). Gateway chưa gộp Swagger.
 
