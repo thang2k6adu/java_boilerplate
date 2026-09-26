@@ -4,11 +4,11 @@ Bản Spring Boot của `nest-boilerplate`, tổ chức nhiều service trong m�
 Contract auth khớp Nest nên `flutter_boilerplate` gọi được nguyên trạng.
 
 ```
-Client ──► gateway :8080 ──┬─► kruzetech-auth :3000   /api/auth/**, /api/users/**
+Client ──► gateway :8088 ──┬─► kruzetech-auth :3000   /api/auth/**, /api/users/**
                            └─► kruzetech-task :3010   /api/tasks/**
 ```
 
-Client chỉ cần đổi host sang gateway (`http://localhost:8080/api`); đường dẫn `/api/...` giữ nguyên.
+Client chỉ cần đổi host sang gateway (`http://localhost:8088/api`); đường dẫn `/api/...` giữ nguyên.
 
 ## Cấu trúc
 

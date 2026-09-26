@@ -19,7 +19,7 @@ NC     := \033[0m
 SERVICES     := kruzetech-auth kruzetech-task kruzetech-gateway
 AUTH_PORT    := 3000
 TASK_PORT    := 3010
-GATEWAY_PORT := 8080
+GATEWAY_PORT := 8088
 DB_PORT      := 5433
 REDIS_PORT   := 6379
 
@@ -161,7 +161,7 @@ run-task:  ## Run kruzetech-task locally (:3010, reads services/kruzetech-task/.
 	@cd services/kruzetech-task && ./gradlew bootRun
 
 .PHONY: run-gateway
-run-gateway:  ## Run kruzetech-gateway locally (:8080, reads services/kruzetech-gateway/.env)
+run-gateway:  ## Run kruzetech-gateway locally (:8088, reads services/kruzetech-gateway/.env)
 	@printf "$(BLUE)-> Running kruzetech-gateway on :$(GATEWAY_PORT)...$(NC)\n"
 	@cd services/kruzetech-gateway && ./gradlew bootRun
 
